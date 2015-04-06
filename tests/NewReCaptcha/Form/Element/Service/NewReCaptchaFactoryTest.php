@@ -22,5 +22,6 @@ class NewReCaptchaFactoryTest extends AbstractHttpControllerTestCase
         $sl = $this->getApplicationServiceLocator();
         $element = $sl->get('FormElementManager')->get('NewReCaptcha');
         $this->assertInstanceOf('NewReCaptcha\Form\Element\NewReCaptcha', $element);
+        $this->assertInstanceOf('NewReCaptcha\Validator\NewReCaptcha', $element->getValidator());
     }
 }
