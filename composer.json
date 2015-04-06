@@ -21,6 +21,9 @@
     "autoload": {
         "psr-4": {
           "NewReCaptcha\\": "src/NewReCaptcha/"
-        }
+        },
+        "classmap": [
+            "./Module.php"
+        ]
     }
 }
