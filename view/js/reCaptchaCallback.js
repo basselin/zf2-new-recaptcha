@@ -1,7 +1,7 @@
 /*!
  * @link      https://github.com/basselin/zf2-new-recaptcha
  * @copyright (c) 2015, Benoit Asselin contact(at)ab-d.fr
- * @license   MIT Licence
+ * @license   MIT License
  */
 'use strict';
 

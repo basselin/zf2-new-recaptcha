@@ -2,7 +2,7 @@
 /**
  * @link      https://github.com/basselin/zf2-new-recaptcha
  * @copyright (c) 2015, Benoit Asselin contact(at)ab-d.fr
- * @license   MIT Licence
+ * @license   MIT License
  */
 
 namespace NewReCaptcha\Form\Element;
@@ -53,10 +53,10 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
     protected $validator;
 
     /**
-     * Les options du reCAPTCHA
-     * - site_key: Cle publique (html)
-     * - secret_key: Cle privee
-     * - remote_ip: Controler l'adresse IP
+     * reCAPTCHA options
+     * - site_key: Public key (html)
+     * - secret_key: Private key
+     * - remote_ip: Check IP
      *
      * @param  array|\Traversable $options
      * @return NewReCaptcha
