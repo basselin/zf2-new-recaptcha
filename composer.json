@@ -1,0 +1,26 @@
+{
+    "name": "basselin/zf2-new-recaptcha",
+    "description": "Class using Google reCAPTCHA",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "zendframework", "zf2",
+        "google", "recaptcha", "captcha"
+    ],
+    "homepage": "https://github.com/basselin/zf2-new-recaptcha",
+    "authors": [
+        {
+            "name": "Benoit Asselin",
+            "email": "contact@ab-d.fr",
+            "homepage": "http://161.io"
+        }
+    ],
+    "require": {
+        "zendframework/zendframework": "2.*"
+    },
+    "autoload": {
+        "psr-4": {
+          "NewReCaptcha\\": "src/NewReCaptcha/"
+        }
+    }
+}
