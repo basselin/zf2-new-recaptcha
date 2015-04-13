@@ -36,6 +36,7 @@ class NewReCaptchaFactory implements FactoryInterface
                 $element->setRemoteIp($configCaptcha['remote_ip']);
             }
         }
+        $element->setRequest($sl->get('Request'));
         return $element;
     }
 }

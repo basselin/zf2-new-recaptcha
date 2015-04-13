@@ -7,6 +7,7 @@
 
 namespace NewReCaptcha\Validator;
 
+use Zend\Http\PhpEnvironment\RemoteAddress;
 use Zend\Validator\AbstractValidator;
 use Zend\Validator\Exception;
 
@@ -44,13 +45,18 @@ class NewReCaptcha extends AbstractValidator
     );
 
     /**
+     * @var string
+     */
+    protected $ipAddress;
+
+    /**
      * Check IP
      *
      * @return bool
      */
     public function withRemoteIp()
     {
-        return $this->getOption('remote_ip') && !empty($_SERVER['REMOTE_ADDR']);
+        return $this->getOption('remote_ip') && !empty($this->getIpAddress());
     }
 
     /**
@@ -61,6 +67,26 @@ class NewReCaptcha extends AbstractValidator
     public function getSecretKey()
     {
         return $this->getOption('secret_key');
+    }
+
+    /**
+     * @return \Zend\Http\Request
+     */
+    public function getRequest()
+    {
+        return $this->getOption('request');
+    }
+
+    /**
+     * @return string
+     */
+    public function getIpAddress()
+    {
+        if (null === $this->ipAddress) {
+            $remote = new RemoteAddress();
+            $this->ipAddress = $remote->getIpAddress();
+        }
+        return $this->ipAddress;
     }
 
     /**
@@ -76,17 +102,18 @@ class NewReCaptcha extends AbstractValidator
      */
     public function isValid($value)
     {
-        if (empty($_POST[static::NAME])) {
+        $request = $this->getRequest();
+        if (empty($request->getPost(static::NAME))) {
             $this->error(static::MISSING_VALUE);
             return false;
         }
 
-        $value = $_POST[static::NAME];
+        $value = $request->getPost(static::NAME);
         $siteVerify  = static::URL_VERIFY;
         $siteVerify .= '?secret=' . $this->getSecretKey();
         $siteVerify .= '&response=' . urlencode($value);
         if ($this->withRemoteIp()) {
-            $siteVerify .= '&remoteip=' . urlencode($_SERVER['REMOTE_ADDR']);
+            $siteVerify .= '&remoteip=' . urlencode($this->getIpAddress());
         }
         $result = json_decode(file_get_contents($siteVerify), true);
         if (isset($result['success']) && $result['success']) {

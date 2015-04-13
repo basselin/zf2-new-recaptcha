@@ -48,6 +48,11 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
     protected $remoteIp = true;
 
     /**
+     * @var \Zend\Http\Request
+     */
+    protected $request;
+
+    /**
      * @var ValidatorInterface
      */
     protected $validator;
@@ -86,6 +91,7 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
     {
         if (null === $this->validator) {
             $this->validator = new NewReCaptchaValidator(array(
+                'request'    => $this->getRequest(),
                 'secret_key' => $this->getSecretKey(),
                 'remote_ip'  => $this->getRemoteIp(),
             ));
@@ -167,6 +173,24 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
     public function setRemoteIp($remoteIp)
     {
         $this->remoteIp = (bool)$remoteIp;
+        return $this;
+    }
+
+    /**
+     * @return \Zend\Http\Request
+     */
+    public function getRequest()
+    {
+        return $this->request;
+    }
+
+    /**
+     * @param  \Zend\Http\Request $request
+     * @return NewReCaptcha
+     */
+    public function setRequest($request)
+    {
+        $this->request = $request;
         return $this;
     }
 
