@@ -56,7 +56,7 @@ class NewReCaptcha extends AbstractValidator
      */
     public function withRemoteIp()
     {
-        return $this->getOption('remote_ip') && !empty($this->getIpAddress());
+        return $this->getOption('remote_ip') && $this->getIpAddress();
     }
 
     /**
@@ -103,7 +103,7 @@ class NewReCaptcha extends AbstractValidator
     public function isValid($value)
     {
         $request = $this->getRequest();
-        if (empty($request->getPost(static::NAME))) {
+        if (!$request->getPost(static::NAME)) {
             $this->error(static::MISSING_VALUE);
             return false;
         }
