@@ -127,7 +127,7 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
      */
     public function setSiteKey($siteKey)
     {
-        $this->siteKey = (string)$siteKey;
+        $this->siteKey = (string) $siteKey;
         $this->setAttribute('data-sitekey', $this->siteKey); // input type="hidden"
         return $this;
     }
@@ -150,7 +150,7 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
      */
     public function setSecretKey($secretKey)
     {
-        $this->secretKey = (string)$secretKey;
+        $this->secretKey = (string) $secretKey;
         return $this;
     }
 
@@ -172,7 +172,7 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
      */
     public function setRemoteIp($remoteIp)
     {
-        $this->remoteIp = (bool)$remoteIp;
+        $this->remoteIp = (bool) $remoteIp;
         return $this;
     }
 
