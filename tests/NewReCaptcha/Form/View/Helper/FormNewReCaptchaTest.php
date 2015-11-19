@@ -20,6 +20,8 @@ class FormNewReCaptchaTest extends AbstractHttpControllerTestCase
     public function testCreateService()
     {
         $sl = $this->getApplicationServiceLocator();
+
+        /* @var \NewReCaptcha\Form\View\Helper\FormNewReCaptcha $helper */
         $helper = $sl->get('ViewHelperManager')->get('FormNewReCaptcha');
         $this->assertInstanceOf('NewReCaptcha\Form\View\Helper\FormNewReCaptcha', $helper);
     }
@@ -27,6 +29,8 @@ class FormNewReCaptchaTest extends AbstractHttpControllerTestCase
     public function testAppendApiJs()
     {
         $sl = $this->getApplicationServiceLocator();
+
+        /* @var \NewReCaptcha\Form\View\Helper\FormNewReCaptcha $helper */
         $helper = $sl->get('ViewHelperManager')->get('FormNewReCaptcha');
         $helper->appendApiJs();
     }
@@ -34,6 +38,8 @@ class FormNewReCaptchaTest extends AbstractHttpControllerTestCase
     public function testGetSetTheme()
     {
         $sl = $this->getApplicationServiceLocator();
+
+        /* @var \NewReCaptcha\Form\View\Helper\FormNewReCaptcha $helper */
         $helper = $sl->get('ViewHelperManager')->get('FormNewReCaptcha');
         $this->assertNull($helper->getTheme());
 

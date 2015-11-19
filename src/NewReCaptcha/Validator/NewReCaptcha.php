@@ -8,6 +8,7 @@
 namespace NewReCaptcha\Validator;
 
 use Zend\Http\PhpEnvironment\RemoteAddress;
+use Zend\Stdlib\ErrorHandler;
 use Zend\Validator\AbstractValidator;
 use Zend\Validator\Exception;
 
@@ -98,7 +99,7 @@ class NewReCaptcha extends AbstractValidator
      *
      * @param  string $value
      * @return bool
-     * @throws Exception\RuntimeException If validation of $value is impossible
+     * @throws \Exception If validation of $value is impossible
      */
     public function isValid($value)
     {
@@ -115,7 +116,24 @@ class NewReCaptcha extends AbstractValidator
         if ($this->withRemoteIp()) {
             $siteVerify .= '&remoteip=' . urlencode($this->getIpAddress());
         }
-        $result = json_decode(file_get_contents($siteVerify), true);
+
+        ErrorHandler::start();
+        $content = file_get_contents($siteVerify);
+        $excReturn = ErrorHandler::stop();
+        if ($excReturn instanceof \Exception) {
+            // Skip SSL
+            $streamContext = stream_context_create(array(
+                'ssl' => array('verify_peer' => false),
+            ));
+            ErrorHandler::start();
+            $content = file_get_contents($siteVerify, false, $streamContext);
+            $excReturn = ErrorHandler::stop();
+            if ($excReturn instanceof \Exception) {
+                throw $excReturn;
+            }
+        }
+
+        $result = json_decode($content, true);
         if (isset($result['success']) && $result['success']) {
             return true;
         }
