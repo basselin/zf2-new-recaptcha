@@ -1,6 +1,8 @@
 <?php
 /**
- * Copyright (c) 2015 Benoit Asselin, http://161.io
+ * @link      https://github.com/basselin/zf2-new-recaptcha
+ * @copyright (c) 2015-2016, Benoit Asselin contact(at)161.io
+ * @license   MIT License
  */
 
 //$rootPath = realpath(__DIR__ . '/../../..');  // module/
