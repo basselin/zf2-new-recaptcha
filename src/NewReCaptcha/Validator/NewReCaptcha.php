@@ -40,10 +40,10 @@ class NewReCaptcha extends AbstractValidator
      *
      * @var array
      */
-    protected $messageTemplates = array(
+    protected $messageTemplates = [
         self::MISSING_VALUE => 'Missing captcha fields',
         self::BAD_CAPTCHA   => 'reCaptcha value is wrong',
-    );
+    ];
 
     /**
      * @var string
@@ -122,9 +122,9 @@ class NewReCaptcha extends AbstractValidator
         $excReturn = ErrorHandler::stop();
         if ($excReturn instanceof \Exception) {
             // Skip SSL
-            $streamContext = stream_context_create(array(
-                'ssl' => array('verify_peer' => false),
-            ));
+            $streamContext = stream_context_create([
+                'ssl' => ['verify_peer' => false],
+            ]);
             ErrorHandler::start();
             $content = file_get_contents($siteVerify, false, $streamContext);
             $excReturn = ErrorHandler::stop();

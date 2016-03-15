@@ -103,7 +103,7 @@ class FormNewReCaptcha extends AbstractHelper
      */
     public function setTheme($theme = null)
     {
-        if (!in_array($theme, array('light', 'dark'))) {
+        if (!in_array($theme, ['light', 'dark'])) {
             $theme = null;
         }
         $this->theme = $theme;

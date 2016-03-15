@@ -11,12 +11,13 @@
     "authors": [
         {
             "name": "Benoit Asselin",
-            "email": "contact@ab-d.fr",
+            "email": "contact@161.io",
             "homepage": "http://161.io"
         }
     ],
     "require": {
-        "zendframework/zendframework": "~2.3"
+        "php": "^5.5 || ^7.0",
+        "zendframework/zendframework": "~2.4"
     },
     "autoload": {
         "psr-4": {

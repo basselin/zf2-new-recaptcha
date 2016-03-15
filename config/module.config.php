@@ -5,20 +5,20 @@
  * @license   MIT License
  */
 
-return array(
-    'new_recaptcha' => array(
+return [
+    'new_recaptcha' => [
         //'site_key'   => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
         //'secret_key' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
         //'remote_ip'  => false,
-    ),
-    'form_elements' => array(
-        'factories' => array(
-            'NewReCaptcha' => 'NewReCaptcha\Form\Element\Service\NewReCaptchaFactory',
-        ),
-    ),
-    'view_helpers' => array(
-        'invokables' => array(
-            'formNewReCaptcha' => 'NewReCaptcha\Form\View\Helper\FormNewReCaptcha',
-        ),
-    ),
-);
+    ],
+    'form_elements' => [
+        'factories' => [
+            'NewReCaptcha' => NewReCaptcha\Form\Element\Service\NewReCaptchaFactory::class,
+        ],
+    ],
+    'view_helpers' => [
+        'invokables' => [
+            'formNewReCaptcha' => NewReCaptcha\Form\View\Helper\FormNewReCaptcha::class,
+        ],
+    ],
+];

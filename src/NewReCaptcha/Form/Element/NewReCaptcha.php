@@ -22,9 +22,9 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
      *
      * @var array
      */
-    protected $attributes = array(
+    protected $attributes = [
         'type' => 'hidden',
-    );
+    ];
 
     /**
      * Public key
@@ -90,11 +90,11 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
     public function getValidator()
     {
         if (null === $this->validator) {
-            $this->validator = new NewReCaptchaValidator(array(
+            $this->validator = new NewReCaptchaValidator([
                 'request'    => $this->getRequest(),
                 'secret_key' => $this->getSecretKey(),
                 'remote_ip'  => $this->getRemoteIp(),
-            ));
+            ]);
         }
         return $this->validator;
     }
@@ -201,13 +201,13 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
      */
     public function getInputSpecification()
     {
-        return array(
-            'name' => $this->getName(),
-            'required' => true,
-            'validators' => array(
+        return [
+            'name'       => $this->getName(),
+            'required'   => true,
+            'validators' => [
                 $this->getValidator(),
-            ),
-        );
+            ],
+        ];
     }
 
     /**
