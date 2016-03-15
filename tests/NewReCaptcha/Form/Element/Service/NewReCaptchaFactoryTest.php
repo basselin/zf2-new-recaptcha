@@ -7,6 +7,7 @@
 
 namespace NewReCaptchaTest\Form\Element\Service;
 
+use NewReCaptcha\Form\Element\NewReCaptcha;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 class NewReCaptchaFactoryTest extends AbstractHttpControllerTestCase
@@ -21,7 +22,18 @@ class NewReCaptchaFactoryTest extends AbstractHttpControllerTestCase
     {
         $sl = $this->getApplicationServiceLocator();
 
-        /* @var \NewReCaptcha\Form\Element\NewReCaptcha $element */
+        /* @var NewReCaptcha $element */
+        $element = $sl->get('FormElementManager')->get(NewReCaptcha::class);
+        $this->assertInstanceOf('NewReCaptcha\Form\Element\NewReCaptcha', $element);
+        $this->assertInstanceOf('NewReCaptcha\Validator\NewReCaptcha', $element->getValidator());
+        $this->assertInstanceOf('Zend\Http\Request', $element->getRequest());
+    }
+
+    public function testCreateServiceByAlias()
+    {
+        $sl = $this->getApplicationServiceLocator();
+
+        /* @var NewReCaptcha $element */
         $element = $sl->get('FormElementManager')->get('NewReCaptcha');
         $this->assertInstanceOf('NewReCaptcha\Form\Element\NewReCaptcha', $element);
         $this->assertInstanceOf('NewReCaptcha\Validator\NewReCaptcha', $element->getValidator());

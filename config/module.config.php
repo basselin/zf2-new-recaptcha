@@ -5,6 +5,8 @@
  * @license   MIT License
  */
 
+namespace NewReCaptcha;
+
 return [
     'new_recaptcha' => [
         //'site_key'   => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
@@ -12,13 +14,16 @@ return [
         //'remote_ip'  => false,
     ],
     'form_elements' => [
+        'aliases' => [
+            'NewReCaptcha' => Form\Element\NewReCaptcha::class,
+        ],
         'factories' => [
-            'NewReCaptcha' => NewReCaptcha\Form\Element\Service\NewReCaptchaFactory::class,
+            Form\Element\NewReCaptcha::class => Form\Element\Service\NewReCaptchaFactory::class,
         ],
     ],
     'view_helpers' => [
         'invokables' => [
-            'formNewReCaptcha' => NewReCaptcha\Form\View\Helper\FormNewReCaptcha::class,
+            'formNewReCaptcha' => Form\View\Helper\FormNewReCaptcha::class,
         ],
     ],
 ];
