@@ -7,23 +7,21 @@
 
 namespace NewReCaptcha\Form\Element\Service;
 
+use Interop\Container\ContainerInterface;
 use NewReCaptcha\Form\Element\NewReCaptcha;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 class NewReCaptchaFactory implements FactoryInterface
 {
     /**
-     * Create service
-     *
-     * @param  ServiceLocatorInterface $serviceLocator
+     * @param  ContainerInterface $container
+     * @param  string $requestedName
+     * @param  array| $options
      * @return NewReCaptcha
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        /* @var ServiceLocatorInterface $sl */
-        $sl = $serviceLocator->getServiceLocator();
-        $config = $sl->get('Config');
+        $config = $container->get('Config');
 
         $element = new NewReCaptcha();
         if (isset($config['new_recaptcha'])) {
@@ -36,7 +34,7 @@ class NewReCaptchaFactory implements FactoryInterface
                 $element->setRemoteIp($configCaptcha['remote_ip']);
             }
         }
-        $element->setRequest($sl->get('Request'));
+        $element->setRequest($container->get('Request'));
         return $element;
     }
 }

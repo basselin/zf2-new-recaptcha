@@ -7,6 +7,8 @@
 
 namespace NewReCaptcha;
 
+use Zend\ServiceManager\Factory\InvokableFactory;
+
 return [
     'new_recaptcha' => [
         //'site_key'   => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
@@ -15,6 +17,8 @@ return [
     ],
     'form_elements' => [
         'aliases' => [
+            'newreraptcha' => Form\Element\NewReCaptcha::class,
+            'newReCaptcha' => Form\Element\NewReCaptcha::class,
             'NewReCaptcha' => Form\Element\NewReCaptcha::class,
         ],
         'factories' => [
@@ -22,8 +26,13 @@ return [
         ],
     ],
     'view_helpers' => [
-        'invokables' => [
+        'aliases' => [
+            'formnewrecaptcha' => Form\View\Helper\FormNewReCaptcha::class,
             'formNewReCaptcha' => Form\View\Helper\FormNewReCaptcha::class,
+            'FormNewReCaptcha' => Form\View\Helper\FormNewReCaptcha::class,
+        ],
+        'factories' => [
+            Form\View\Helper\FormNewReCaptcha::class => InvokableFactory::class,
         ],
     ],
 ];
