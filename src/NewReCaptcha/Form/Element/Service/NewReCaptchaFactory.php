@@ -16,7 +16,7 @@ class NewReCaptchaFactory implements FactoryInterface
     /**
      * @param  ContainerInterface $container
      * @param  string $requestedName
-     * @param  array| $options
+     * @param  array $options
      * @return NewReCaptcha
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
