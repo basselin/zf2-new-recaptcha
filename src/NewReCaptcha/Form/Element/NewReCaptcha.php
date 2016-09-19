@@ -64,7 +64,7 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
      * - remote_ip: Check IP
      *
      * @param  array|\Traversable $options
-     * @return NewReCaptcha
+     * @return self
      * @throws Exception\InvalidArgumentException
      */
     public function setOptions($options)
@@ -101,7 +101,7 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
 
     /**
      * @param  ValidatorInterface $validator
-     * @return NewReCaptcha
+     * @return self
      */
     public function setValidator(ValidatorInterface $validator)
     {
@@ -123,7 +123,7 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
      * Public key
      *
      * @param  string $siteKey
-     * @return NewReCaptcha
+     * @return self
      */
     public function setSiteKey($siteKey)
     {
@@ -146,7 +146,7 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
      * Private key
      *
      * @param  string $secretKey
-     * @return NewReCaptcha
+     * @return self
      */
     public function setSecretKey($secretKey)
     {
@@ -168,7 +168,7 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
      * Check IP
      *
      * @param  bool $remoteIp
-     * @return NewReCaptcha
+     * @return self
      */
     public function setRemoteIp($remoteIp)
     {
@@ -186,7 +186,7 @@ class NewReCaptcha extends Element implements InputProviderInterface, ElementPre
 
     /**
      * @param  \Zend\Http\Request $request
-     * @return NewReCaptcha
+     * @return self
      */
     public function setRequest($request)
     {
