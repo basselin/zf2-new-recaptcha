@@ -13,7 +13,7 @@ use Zend\View\Helper\AbstractHelper;
 
 /**
  * Helper: $this->formNewReCaptcha();
- * @see Zend\Form\View\Helper\FormHidden
+ * @see \Zend\Form\View\Helper\FormHidden
  */
 class FormNewReCaptcha extends AbstractHelper
 {
@@ -77,7 +77,7 @@ class FormNewReCaptcha extends AbstractHelper
     }
 
     /**
-     * @return FormNewReCaptcha
+     * @return self
      */
     public function appendApiJs()
     {
@@ -99,7 +99,7 @@ class FormNewReCaptcha extends AbstractHelper
      * The color theme of the widget
      *
      * @param  string $theme
-     * @return FormNewReCaptcha
+     * @return self
      */
     public function setTheme($theme = null)
     {
