@@ -8,4 +8,8 @@
             <directory>./</directory>
         </testsuite>
     </testsuites>
+
+    <php>
+        <const name="PHPUNIT_WATCHTOWER" value=""/>
+    </php>
 </phpunit>
